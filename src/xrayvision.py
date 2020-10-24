@@ -1290,6 +1290,7 @@ class COVID19_Dataset(Dataset):
 
         imgid = self.csv['filename'].iloc[idx]
         img_path = os.path.join(self.imgpath, imgid)
+        image = Image.open(img_path).convert('RGB')
         img = imread(img_path)
         if self.default_normalize:
             img = normalize(img, self.MAXVAL)
@@ -1301,7 +1302,9 @@ class COVID19_Dataset(Dataset):
             print("error, dimension lower than 2 for image")
 
         # Add color channel
-        sample["img"] = img[None, :, :]
+        sample['image'] = image
+        sample["img"] = np.asfarray(image)
+        # sample["img"] = img[None, :]
 
         transform_seed = np.random.randint(2147483647)
 

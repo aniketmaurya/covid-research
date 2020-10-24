@@ -1,9 +1,7 @@
 # encoding: utf-8
-
 """
 The main CheXNet model implementation.
 """
-
 
 import os
 import numpy as np
@@ -15,14 +13,17 @@ import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
 from sklearn.metrics import roc_auc_score
 
-
-CKPT_PATH = 'model.pth.tar'
+CKPT_PATH = '/Users/aniket/Google Drive/Projects/covid-research/checkpoints/chexnet/model.pth.tar'
 N_CLASSES = 14
-CLASS_NAMES = [ 'Atelectasis', 'Cardiomegaly', 'Effusion', 'Infiltration', 'Mass', 'Nodule', 'Pneumonia',
-                'Pneumothorax', 'Consolidation', 'Edema', 'Emphysema', 'Fibrosis', 'Pleural_Thickening', 'Hernia']
+CLASS_NAMES = [
+    'Atelectasis', 'Cardiomegaly', 'Effusion', 'Infiltration', 'Mass',
+    'Nodule', 'Pneumonia', 'Pneumothorax', 'Consolidation', 'Edema',
+    'Emphysema', 'Fibrosis', 'Pleural_Thickening', 'Hernia'
+]
 DATA_DIR = './ChestX-ray14/images'
 TEST_IMAGE_LIST = './ChestX-ray14/labels/test_list.txt'
 BATCH_SIZE = 64
+
 
 
 def compute_AUCs(gt, pred):
@@ -58,9 +59,7 @@ class DenseNet121(nn.Module):
         self.densenet121 = torchvision.models.densenet121(pretrained=True)
         num_ftrs = self.densenet121.classifier.in_features
         self.densenet121.classifier = nn.Sequential(
-            nn.Linear(num_ftrs, out_size),
-            nn.Sigmoid()
-        )
+            nn.Linear(num_ftrs, out_size), nn.Sigmoid())
 
     def forward(self, x):
         x = self.densenet121(x)

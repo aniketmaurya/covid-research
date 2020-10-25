@@ -1229,8 +1229,7 @@ class COVID19_Dataset(Dataset):
                  seed=0,
                  pure_labels=False,
                  unique_patients=True,
-                 semantic_masks=False,
-                 default_normalize=True):
+                 semantic_masks=False):
 
         super(COVID19_Dataset, self).__init__()
         np.random.seed(seed)  # Reset the seed so all runs are the same.
@@ -1240,7 +1239,6 @@ class COVID19_Dataset(Dataset):
         self.views = views
         self.semantic_masks = semantic_masks
         self.semantic_masks_v7labs_lungs_path = semantic_masks_v7labs_lungs_path
-        self.default_normalize = default_normalize
 
         # Load data
         self.csvpath = csvpath
@@ -1288,12 +1286,13 @@ class COVID19_Dataset(Dataset):
         sample["idx"] = idx
         sample["lab"] = self.labels[idx]
 
+        sample["intubated"] = self.csv['intubated'].iloc[idx]
+
         imgid = self.csv['filename'].iloc[idx]
         img_path = os.path.join(self.imgpath, imgid)
-        image = Image.open(img_path).convert('RGB')
+        #print(img_path)
         img = imread(img_path)
-        if self.default_normalize:
-            img = normalize(img, self.MAXVAL)
+        img = normalize(img, self.MAXVAL)
 
         # Check that images are 2D arrays
         if len(img.shape) > 2:
@@ -1302,9 +1301,7 @@ class COVID19_Dataset(Dataset):
             print("error, dimension lower than 2 for image")
 
         # Add color channel
-        sample['image'] = image
-        sample["img"] = np.asfarray(image)
-        # sample["img"] = img[None, :]
+        sample["img"] = img[None, :, :]
 
         transform_seed = np.random.randint(2147483647)
 

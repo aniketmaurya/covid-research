@@ -2,7 +2,7 @@
 Research on Prognosis and Diagnosis of Covid-19
 
 > Paper:
-[Predicting intubation support requirement of patients using Chest X-ray with Deep Representation Learning](https://www.researchgate.net/publication/344889411_Predicting_intubation_support_requirement_of_patients_using_Chest_X-ray_with_Deep_Representation_Learning?_sg=lFJw2U031kIrE19yyUc7n8q2boOZNR6LgQbgXRj9Tua8mxffAW7QifQpGXRGccbE973BdIHDXhtbBioDdnX1fjvyEfAYDaClpKGU1iLj.rVw_3xGP7u-PbUEqvsb1WgriCsB71paF7Gqoq-qb7KgS-WaGk_aEE-q7qnQCHZGYviVZXHiv4wZ8vwzz3E3KcA)
+[Predicting intubation support requirement of patients using Chest X-ray with Deep Representation Learning](https://arxiv.org/abs/2011.01787)
 
 
 # Abstract

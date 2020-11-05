@@ -14,7 +14,7 @@ We present prediction of intubation support requirement for patients from the Ch
 Link: [covid-chestxray-dataset](https://github.com/ieee8023/covid-chestxray-dataset)
 
 
-![](images/xray-visual.png)
+<img src="images/xray-visual.png" width=400px>
 
 
 ![0.84 AUC (95% CI 0.62, 0.86) on the test set](images/intubation-roc-curve.png)

@@ -13,11 +13,11 @@ We present prediction of intubation support requirement for patients from the Ch
 # Dataset
 Link: [covid-chestxray-dataset](https://github.com/ieee8023/covid-chestxray-dataset)
 
-![](images/01-covid_dist.svg)
-
 
 ![](images/xray-visual.png)
 
+
+![](images/intubation-roc-curve.png)
 
 
 # Acknowledgement
